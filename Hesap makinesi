@@ -1,0 +1,30 @@
+import 'dart:io';
+
+void main() {
+print("Birinci sayiyi gir");
+String? input1 = stdin.readLineSync();
+double number1 = double.parse(input1!);
+
+print("İkinci sayiyi gir");
+String? input2 = stdin.readLineSync();
+double number2 = double.parse(input2!);
+
+print( "işlem gir:(+, -, *, /)");
+String? islem = stdin.readLineSync();
+
+double? result;
+
+if (islem == "+" ) {
+  result = number1 + number2;
+  }else if  (islem == "-"){
+    result = number1 - number2;
+  }else if (islem == "*"){
+    result = number1 * number2;
+  }else if (islem == "/") {
+  result = number1 / number2;
+  }else {
+    print ("Yanlış işlem yaptın");
+    return;
+ }
+ print("Sonuç: $result");
+}
