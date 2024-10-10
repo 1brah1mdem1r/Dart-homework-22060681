@@ -1,0 +1,29 @@
+import 'dart:io';
+
+ void main() {
+  List<int> liste = [];
+  List<int> cift_sayilar = [];
+
+  for (int i=1; i<=10; i++) {
+    int? sayi;
+
+    do {
+      print("${i}. sayıyı gir: ");
+      String? input = stdin.readLineSync();
+      if (input != null && int.tryParse(input) != null) {
+        sayi = int.parse(input);
+      } else {
+        print("Geçersiz girdi. Tam sayı gir:");
+      }
+    } while (sayi == null);
+
+    liste.add(sayi!);
+  }
+    cift_sayilar = liste.where((sayi) => sayi % 2 == 0).toList();
+
+    if (cift_sayilar.isEmpty) {
+      print("Girilen sayılar arasında çift sayı yok...");
+    } else {
+      print("Çift Sayılar: $cift_sayilar");
+    }
+}
