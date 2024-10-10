@@ -1,0 +1,49 @@
+import 'dart:io';
+
+void main() {
+
+  print('Öğrenci ismi gir:');
+  String? isim = stdin.readLineSync();
+
+  print('Öğrenci soyismi gir:');
+  String? soyisim = stdin.readLineSync();
+
+  if (isim == null || soyisim == null || isim.isEmpty || soyisim.isEmpty) {
+    print('Geçerli bir isim ve soyisim gir.');
+    return;
+  }
+  Ogrenci ogrenci = Ogrenci(isim, soyisim);
+
+  ogrenci.notEkle();
+  ogrenci.ortalamaHesapla();
+}
+
+class Ogrenci {
+  String isim;
+  String soyisim;
+  List<int> notlar = [];
+
+  Ogrenci(this.isim, this.soyisim);
+
+  void notEkle() {
+    print('Kaç tane not eklemek istiyorsun?');
+    String? adetGirdi = stdin.readLineSync();
+    int adet = int.parse(adetGirdi!);
+
+    for (int i = 0; i < adet; i++) {
+      print('${i + 1}. notu giriniz:');
+      String? notGirdisi = stdin.readLineSync();
+      int not = int.parse(notGirdisi!);
+      notlar.add(not);
+    }
+  }
+
+  void ortalamaHesapla() {
+    int toplam = 0;
+    for (int not in notlar) {
+      toplam += not;
+    }
+    double ortalama = toplam / notlar.length;
+    print('Öğrencinin Not Ortalaması: $ortalama');
+  }
+}
